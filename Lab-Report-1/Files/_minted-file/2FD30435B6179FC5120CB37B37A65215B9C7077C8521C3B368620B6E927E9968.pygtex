@@ -1,0 +1,50 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+no}{`timescale}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{n}{s}\PYG{o}{/}\PYG{l+m+mh}{100}\PYG{n}{ms}
+\PYG{n+no}{`include}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}design.v\PYGZdq{}}\PYG{+w}{ }\PYG{c+c1}{//inlcuding the gates implementation file}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{main}\PYG{p}{();}\PYG{+w}{ }\PYG{c+c1}{//module of the testbench starts}
+\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{,}\PYG{n}{d}\PYG{p}{;}
+\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{F}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{y1}\PYG{p}{,}\PYG{n}{y2}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{out1}\PYG{p}{,}\PYG{n}{out2}\PYG{p}{;}
+
+\PYG{c+c1}{//instantitation the design module and passing the parameters}
+\PYG{c+c1}{// case a:}
+\PYG{n}{mux8x1}\PYG{+w}{ }\PYG{n}{func1}\PYG{p}{(}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{o}{\PYGZti{}}\PYG{n}{a}\PYG{p}{,}\PYG{n}{a}\PYG{p}{,}\PYG{l+m+mh}{0}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{n}{a}\PYG{p}{,}\PYG{n}{d}\PYG{p}{,}\PYG{n}{c}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{y1}\PYG{p}{);}\PYG{c+c1}{// 8x1 MUX}
+
+\PYG{c+c1}{// case b:}
+\PYG{n}{mux4x1}\PYG{+w}{ }\PYG{n}{func2}\PYG{p}{(}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{o}{\PYGZti{}}\PYG{n}{a}\PYG{p}{,}\PYG{n}{a}\PYG{p}{,}\PYG{n}{d}\PYG{p}{,}\PYG{n}{c}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{out1}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{//4x1 MUX\PYGZhy{}1}
+\PYG{n}{mux4x1}\PYG{+w}{ }\PYG{n}{func3}\PYG{p}{(}\PYG{l+m+mh}{0}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{p}{,}\PYG{n}{a}\PYG{p}{,}\PYG{n}{d}\PYG{p}{,}\PYG{n}{c}\PYG{p}{,}\PYG{o}{\PYGZti{}}\PYG{n}{b}\PYG{p}{,}\PYG{n}{out2}\PYG{p}{);}\PYG{c+c1}{// 4x1 MUX\PYGZhy{}2}
+\PYG{n}{ORgate}\PYG{+w}{ }\PYG{n}{func4}\PYG{p}{(}\PYG{n}{out1}\PYG{p}{,}\PYG{n}{out2}\PYG{p}{,}\PYG{n}{y2}\PYG{p}{);}
+
+\PYG{c+c1}{//Realising function using k\PYGZhy{}maps}
+\PYG{n}{kmap}\PYG{+w}{ }\PYG{n}{func5}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{,}\PYG{n}{d}\PYG{p}{,}\PYG{n}{F}\PYG{p}{);}
+
+\PYG{k}{initial}\PYG{+w}{ }
+\PYG{k}{begin}
+\PYG{+w}{  }\PYG{n+nb}{\PYGZdl{}monitor}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}a=\PYGZpc{}b,b=\PYGZpc{}b,c=\PYGZpc{}b,d=\PYGZpc{}b,y1=\PYGZpc{}b,y2=\PYGZpc{}b,F=\PYGZpc{}b\PYGZdq{}}\PYG{p}{,}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{,}\PYG{n}{d}\PYG{p}{,}\PYG{n}{y1}\PYG{p}{,}\PYG{n}{y2}\PYG{p}{,}\PYG{n}{F}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{\PYGZdl{}dumpfile}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}design.vcd\PYGZdq{}}\PYG{p}{);}\PYG{+w}{ }
+\PYG{+w}{  }\PYG{n}{\PYGZdl{}dumpvars}\PYG{p}{(}\PYG{l+m+mh}{0}\PYG{p}{,}\PYG{n}{main}\PYG{p}{);}
+
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}\PYG{+w}{ }
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{d}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{n+nb}{\PYGZdl{}finish}\PYG{p}{;}
+\PYG{k}{end}
+\PYG{k}{endmodule}
+\end{Verbatim}

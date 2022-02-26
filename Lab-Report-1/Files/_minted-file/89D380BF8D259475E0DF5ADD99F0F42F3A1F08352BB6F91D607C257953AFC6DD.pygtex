@@ -1,0 +1,55 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{kmap}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{B}\PYG{p}{,}\PYG{n}{C}\PYG{p}{,}\PYG{n}{D}\PYG{p}{,}\PYG{n}{out}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k}{input}\PYG{+w}{ }\PYG{n}{A}\PYG{p}{,}\PYG{n}{B}\PYG{p}{,}\PYG{n}{C}\PYG{p}{,}\PYG{n}{D}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{output}\PYG{+w}{ }\PYG{n}{out}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{A}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{B}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{C}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{C}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{A}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{C}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{D}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{B}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{C}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{D}\PYG{p}{);}
+\PYG{k}{endmodule}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{mux8x1}\PYG{p}{(}\PYG{n}{i0}\PYG{p}{,}\PYG{n}{i1}\PYG{p}{,}\PYG{n}{i2}\PYG{p}{,}\PYG{n}{i3}\PYG{p}{,}\PYG{n}{i4}\PYG{p}{,}\PYG{n}{i5}\PYG{p}{,}\PYG{n}{i6}\PYG{p}{,}\PYG{n}{i7}\PYG{p}{,}\PYG{n}{sel0}\PYG{p}{,}\PYG{n}{sel1}\PYG{p}{,}\PYG{n}{sel2}\PYG{p}{,}\PYG{n}{out}\PYG{p}{);}
+\PYG{k}{input}\PYG{+w}{ }\PYG{n}{i0}\PYG{p}{,}\PYG{n}{i1}\PYG{p}{,}\PYG{n}{i2}\PYG{p}{,}\PYG{n}{i3}\PYG{p}{,}\PYG{n}{i4}\PYG{p}{,}\PYG{n}{i5}\PYG{p}{,}\PYG{n}{i6}\PYG{p}{,}\PYG{n}{i7}\PYG{p}{,}\PYG{n}{sel0}\PYG{p}{,}\PYG{n}{sel1}\PYG{p}{,}\PYG{n}{sel2}\PYG{p}{;}
+\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{out}\PYG{p}{;}
+\PYG{k}{always}\PYG{p}{@(}\PYG{o}{*}\PYG{p}{)}
+\PYG{+w}{  }\PYG{k}{begin}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i3}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i4}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i5}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i6}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sel2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i7}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{end}
+\PYG{k}{endmodule}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{mux4x1}\PYG{p}{(}\PYG{n}{i0}\PYG{p}{,}\PYG{n}{i1}\PYG{p}{,}\PYG{n}{i2}\PYG{p}{,}\PYG{n}{i3}\PYG{p}{,}\PYG{n}{sel0}\PYG{p}{,}\PYG{n}{sel1}\PYG{p}{,}\PYG{n}{E}\PYG{p}{,}\PYG{n}{out}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{//E is enable line}
+\PYG{k}{input}\PYG{+w}{ }\PYG{n}{i0}\PYG{p}{,}\PYG{n}{i1}\PYG{p}{,}\PYG{n}{i2}\PYG{p}{,}\PYG{n}{i3}\PYG{p}{,}\PYG{n}{sel0}\PYG{p}{,}\PYG{n}{sel1}\PYG{p}{,}\PYG{n}{E}\PYG{p}{;}
+\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{out}\PYG{p}{;}
+\PYG{k}{always}\PYG{p}{@(}\PYG{o}{*}\PYG{p}{)}
+\PYG{+w}{  }\PYG{k}{begin}
+\PYG{+w}{    }\PYG{k}{if}\PYG{p}{(}\PYG{n}{E}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//if the mux is not active then giving 0 output}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sel1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{sel0}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{out}\PYG{o}{=}\PYG{n}{i3}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{end}
+\PYG{k}{endmodule}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{ORgate}\PYG{p}{(}\PYG{n}{in1}\PYG{p}{,}\PYG{n}{in2}\PYG{p}{,}\PYG{n}{out}\PYG{p}{);}
+\PYG{k}{input}\PYG{+w}{ }\PYG{n}{in1}\PYG{p}{,}\PYG{n}{in2}\PYG{p}{;}
+\PYG{k}{output}\PYG{+w}{ }\PYG{n}{out}\PYG{p}{;}
+\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{out}\PYG{o}{=}\PYG{n}{in1}\PYG{o}{|}\PYG{n}{in2}\PYG{p}{;}
+\PYG{k}{endmodule}
+\end{Verbatim}
