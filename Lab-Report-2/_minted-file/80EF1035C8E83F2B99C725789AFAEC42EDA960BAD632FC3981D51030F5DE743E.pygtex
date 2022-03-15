@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+no}{`timescale}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{n}{s}\PYG{o}{/}\PYG{l+m+mh}{100}\PYG{n}{ms}
+\PYG{n+no}{`include}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}design.v\PYGZdq{}}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{main}\PYG{p}{();}
+
+\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{clk}\PYG{p}{;}
+\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{q0}\PYG{p}{,}\PYG{n}{q1}\PYG{p}{,}\PYG{n}{q2}\PYG{p}{,}\PYG{n}{q3}\PYG{p}{,}\PYG{n}{q3bar}\PYG{p}{,}\PYG{n}{q2bar}\PYG{p}{,}\PYG{n}{q1bar}\PYG{p}{,}\PYG{n}{q0bar}\PYG{p}{;}
+
+\PYG{c+c1}{//Instantating the flip flops with respective intial values}
+\PYG{n}{DFlipFlop}\PYG{+w}{ }\PYG{n}{ff3}\PYG{p}{(}\PYG{n}{q1}\PYG{o}{\PYGZca{}}\PYG{n}{q0}\PYG{p}{,}\PYG{n}{clk}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{,}\PYG{n}{q3}\PYG{p}{,}\PYG{n}{q3bar}\PYG{p}{);}
+\PYG{n}{DFlipFlop}\PYG{+w}{ }\PYG{n}{ff2}\PYG{p}{(}\PYG{n}{q3}\PYG{p}{,}\PYG{n}{clk}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{,}\PYG{n}{q2}\PYG{p}{,}\PYG{n}{q2bar}\PYG{p}{);}
+\PYG{n}{DFlipFlop}\PYG{+w}{ }\PYG{n}{ff1}\PYG{p}{(}\PYG{n}{q2}\PYG{p}{,}\PYG{n}{clk}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{,}\PYG{n}{q1}\PYG{p}{,}\PYG{n}{q1bar}\PYG{p}{);}
+\PYG{n}{DFlipFlop}\PYG{+w}{ }\PYG{n}{ff0}\PYG{p}{(}\PYG{n}{q1}\PYG{p}{,}\PYG{n}{clk}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{,}\PYG{n}{q0}\PYG{p}{,}\PYG{n}{q0bar}\PYG{p}{);}
+
+\PYG{k}{initial}\PYG{+w}{ }
+\PYG{k}{begin}
+\PYG{n+nb}{\PYGZdl{}monitor}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}CLK=\PYGZpc{}b,q3=\PYGZpc{}b,q2=\PYGZpc{}b,q1=\PYGZpc{}b,q0=\PYGZpc{}b\PYGZdq{}}\PYG{p}{,}\PYG{n}{clk}\PYG{p}{,}\PYG{n}{q3}\PYG{p}{,}\PYG{n}{q2}\PYG{p}{,}\PYG{n}{q1}\PYG{p}{,}\PYG{n}{q0}\PYG{p}{);}
+\PYG{n}{\PYGZdl{}dumpfile}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}design.vcd\PYGZdq{}}\PYG{p}{);}
+\PYG{n}{\PYGZdl{}dumpvars}\PYG{p}{(}\PYG{l+m+mh}{0}\PYG{p}{,}\PYG{n}{main}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{clk}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//intitially clock=0;}
+\PYG{+w}{  }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{150}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//simulation time}
+\PYG{+w}{  }\PYG{n+nb}{\PYGZdl{}finish}\PYG{p}{;}
+\PYG{k}{end}
+\PYG{k}{always}\PYG{+w}{ }
+\PYG{+w}{  }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{5}\PYG{+w}{ }\PYG{n}{clk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{clk}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//changing clock after every 5s}
+\PYG{k}{endmodule}
+\end{Verbatim}
