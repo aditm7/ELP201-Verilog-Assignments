@@ -1,0 +1,208 @@
+$date
+	Thu Mar 31 20:59:10 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ms
+$end
+$scope module fsm_tb $end
+$var wire 1 ! q2b $end
+$var wire 1 " q2 $end
+$var wire 1 # q1b $end
+$var wire 1 $ q1 $end
+$var wire 1 % q0b $end
+$var wire 1 & q0 $end
+$var reg 1 ' Y $end
+$var reg 1 ( clk $end
+$var reg 1 ) in $end
+$scope module dff1 $end
+$var wire 1 * D $end
+$var wire 1 ( clk $end
+$var wire 1 + pre $end
+$var reg 1 & Q $end
+$var reg 1 % Qb $end
+$upscope $end
+$scope module dff2 $end
+$var wire 1 , D $end
+$var wire 1 ( clk $end
+$var wire 1 - pre $end
+$var reg 1 $ Q $end
+$var reg 1 # Qb $end
+$upscope $end
+$scope module dff3 $end
+$var wire 1 . D $end
+$var wire 1 ( clk $end
+$var wire 1 / pre $end
+$var reg 1 " Q $end
+$var reg 1 ! Qb $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+z/
+0.
+z-
+0,
+z+
+1*
+1)
+0(
+0'
+0&
+1%
+0$
+1#
+0"
+1!
+$end
+#100
+0*
+1,
+0%
+1&
+1'
+1(
+#200
+0(
+#300
+1*
+0#
+1$
+1%
+0&
+0'
+1(
+#400
+0(
+#500
+0,
+0*
+1.
+0%
+1&
+1'
+1(
+#600
+0(
+#700
+1*
+0!
+1"
+1#
+0$
+1%
+0&
+0'
+1(
+#800
+0(
+#900
+0.
+0*
+0%
+1&
+1(
+#1000
+0(
+#1100
+1*
+1!
+0"
+1%
+0&
+1(
+#1200
+0*
+0(
+0)
+#1300
+1(
+#1400
+0(
+#1500
+1(
+#1600
+0(
+#1700
+1(
+#1800
+0(
+#1900
+1(
+#2000
+0(
+#2100
+1(
+#2200
+0(
+#2300
+1(
+#2400
+1*
+0(
+1)
+#2500
+0*
+1,
+0%
+1&
+1'
+1(
+#2600
+0(
+0)
+#2700
+1*
+0#
+1$
+1%
+0&
+0'
+1(
+#2800
+0(
+#2900
+0*
+0,
+1.
+0%
+1&
+1'
+1(
+#3000
+0(
+#3100
+1*
+0!
+1"
+1#
+0$
+1%
+0&
+0'
+1(
+#3200
+0(
+#3300
+0*
+0.
+0%
+1&
+1(
+#3400
+0(
+#3500
+1!
+0"
+1%
+0&
+1(
+#3600
+0(
+#3700
+1(
+#3800
+0(

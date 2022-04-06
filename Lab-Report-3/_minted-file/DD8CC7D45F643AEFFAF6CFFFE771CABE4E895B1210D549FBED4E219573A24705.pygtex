@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{DFlipFlop}\PYG{p}{(}\PYG{n}{D}\PYG{p}{,}\PYG{n}{clock}\PYG{p}{,}\PYG{n}{preset}\PYG{p}{,}\PYG{n}{Q}\PYG{p}{,}\PYG{n}{Qbar}\PYG{p}{);}
+\PYG{k}{input}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{,}\PYG{n}{clock}\PYG{p}{,}\PYG{n}{preset}\PYG{p}{;}
+\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{Q}\PYG{p}{,}\PYG{n}{Qbar}\PYG{p}{;}
+
+\PYG{k}{initial}
+\PYG{k}{begin}
+\PYG{+w}{  }\PYG{k}{if}\PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{preset}\PYG{p}{)}
+\PYG{+w}{  }\PYG{k}{begin}
+\PYG{+w}{    }\PYG{n}{Q}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}\PYG{n}{Qbar}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{end}
+\PYG{+w}{  }\PYG{k}{else}
+\PYG{+w}{  }\PYG{k}{begin}
+\PYG{+w}{    }\PYG{n}{Q}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}\PYG{n}{Qbar}\PYG{o}{=}\PYG{l+m+mh}{1}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{end}
+\PYG{k}{end}
+
+\PYG{k}{always}\PYG{p}{@(}\PYG{k}{posedge}\PYG{+w}{ }\PYG{n}{clock}\PYG{p}{)}
+\PYG{k}{begin}
+\PYG{+w}{  }\PYG{n}{Q}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Qbar}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{D}\PYG{p}{;}
+\PYG{k}{end}
+\PYG{k}{endmodule}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{FSM}\PYG{p}{(}\PYG{n}{in}\PYG{p}{,}\PYG{n}{out}\PYG{p}{,}\PYG{n}{clock}\PYG{p}{,}\PYG{n}{q2}\PYG{p}{,}\PYG{n}{q1}\PYG{p}{,}\PYG{n}{q0}\PYG{p}{,}\PYG{n}{q2bar}\PYG{p}{,}\PYG{n}{q1bar}\PYG{p}{,}\PYG{n}{q0bar}\PYG{p}{);}
+\PYG{k}{input}\PYG{+w}{ }\PYG{n}{in}\PYG{p}{,}\PYG{n}{clock}\PYG{p}{;}
+\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{q2}\PYG{p}{,}\PYG{n}{q1}\PYG{p}{,}\PYG{n}{q0}\PYG{p}{,}\PYG{n}{q2bar}\PYG{p}{,}\PYG{n}{q1bar}\PYG{p}{,}\PYG{n}{q0bar}\PYG{p}{;}
+\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{out}\PYG{o}{=}\PYG{l+m+mh}{0}\PYG{p}{;}
+
+\PYG{n}{DFlipFlop}\PYG{+w}{ }\PYG{n}{ff1}\PYG{p}{((}\PYG{n}{q0bar}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{in}\PYG{p}{)}\PYG{o}{|}\PYG{p}{(}\PYG{n}{q1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q0bar}\PYG{p}{)}\PYG{o}{|}\PYG{p}{(}\PYG{n}{q2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q0bar}\PYG{p}{),}\PYG{n}{clock}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{,}\PYG{n}{q0}\PYG{p}{,}\PYG{n}{q0bar}\PYG{p}{);}
+\PYG{n}{DFlipFlop}\PYG{+w}{ }\PYG{n}{ff2}\PYG{p}{((}\PYG{n}{q2bar}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q1bar}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q0}\PYG{p}{)}\PYG{o}{|}\PYG{p}{(}\PYG{n}{q1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q0bar}\PYG{p}{),}\PYG{n}{clock}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{,}\PYG{n}{q1}\PYG{p}{,}\PYG{n}{q1bar}\PYG{p}{);}
+\PYG{n}{DFlipFlop}\PYG{+w}{ }\PYG{n}{ff3}\PYG{p}{((}\PYG{n}{q2}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q0bar}\PYG{p}{)}\PYG{o}{|}\PYG{p}{(}\PYG{n}{q1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{q0}\PYG{p}{),}\PYG{n}{clock}\PYG{p}{,}\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{,}\PYG{n}{q2}\PYG{p}{,}\PYG{n}{q2bar}\PYG{p}{);}
+\PYG{k}{always}\PYG{+w}{ }\PYG{p}{@(}\PYG{k}{posedge}\PYG{+w}{ }\PYG{n}{clock}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }
+\PYG{k}{begin}
+\PYG{+w}{  }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{out}\PYG{o}{=}\PYG{p}{(}\PYG{n}{q1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q0bar}\PYG{p}{)}\PYG{o}{|}\PYG{p}{(}\PYG{n}{q2bar}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{q0bar}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{in}\PYG{p}{);}
+\PYG{k}{end}
+\PYG{k}{endmodule}
+\end{Verbatim}
